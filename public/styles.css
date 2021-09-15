@@ -1,0 +1,230 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav, footer{
+    background-color:whitesmoke;
+    width: 100%;
+    min-height: 10vh;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+footer{
+    flex-direction: column;
+}
+
+footer h4{
+    font-family: 'Pacifico', cursive;
+    font-size: 5vmin;
+    color: #eb6d19;
+    text-shadow: 4px 4px 2px rgba(0,0,0,0.1);
+    padding-bottom: 1rem;
+    align-self: flex-start;
+    padding: 1rem;
+}
+
+footer div{
+ margin-bottom: 1rem;
+}
+
+footer div a {
+    text-decoration: none;
+    padding: .5em;
+}
+
+
+nav a{
+    color:black;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Martel Sans', sans-serif;
+}
+
+.hero{
+    width: 100%;
+    min-height: 90vh;
+    background-image:url(https://i.postimg.cc/WtRYBy2b/hero.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hero h1{
+    font-family: 'Pacifico', cursive;
+    font-size: 20vmin;
+    color: #eb6d19;
+    text-shadow: 4px 4px 2px rgba(0,0,0,0.1);
+    padding-bottom: 1rem;
+}
+
+.hero h5{
+    margin-top: .5rem;
+    padding-top: 1rem;
+    font-family: 'Martel Sans', sans-serif;
+    color: #4a4a4a;
+    font-size: 4vmin;
+    letter-spacing: .5vmin;
+}
+
+.home{
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    background-image: url(https://i.postimg.cc/BbZdGfSC/fondo3.png);
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: center;
+}
+
+.carousel{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+.carousel p{
+    padding-top: 1rem;
+    font-family: 'Martel Sans', sans-serif;
+    color:transparent;
+    font-weight: bold;
+    font-size: 5vmin;
+}
+
+
+.breakfast, .meals, .drinks, .desserts{
+    width: 30rem !important;
+    height:30rem!important;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 10px 10px 56px 3px rgba(0,0,0,0.23);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.breakfast{
+    background-image:url(https://i.postimg.cc/fT09fnKp/breakfast.jpg);
+}
+
+.meals{
+    background-image: url(https://i.postimg.cc/BZgck09z/meal.jpg);
+}
+
+.desserts{
+    background-image: url(https://i.postimg.cc/W1JZNRCT/dessert.jpg);
+}
+
+.drinks{
+    background-image: url(https://i.postimg.cc/P544DvT2/drinks.jpg)
+}
+
+.title{
+    font-weight: bold;
+    color: #4a4a4a !important;
+}
+
+.signUp, .signIn {
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size:cover;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 90vh;
+}
+
+.signUp{
+    background-image: url(https://i.postimg.cc/d3bjr2z7/yummy-3.png);
+}
+
+.signIn{
+    background-image: url(https://i.postimg.cc/xd0FPpyD/yummy1.png);
+}
+
+.signUp form, .signIn form {
+    padding: .5em;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Martel Sans', sans-serif;
+}
+
+.signUp form p, .signIn form p {
+    text-align: center;
+}
+
+.signUp form a, .signIn form a  {
+    color:#eb6d19;
+    text-decoration: none;
+}
+
+.signUp form input, .signIn form input {
+    padding: 1.3rem;
+    margin: .5em;
+    border: none;
+    border-radius: 1em;
+    background-color: transparent;
+    box-shadow: 10px 10px 56px 3px rgba(0,0,0,0.29);
+    outline: none;
+}
+
+.signUp button, .signIn button {
+    width: 30%;
+    align-self: center;
+    padding: 1em;
+    outline: none;
+    border:none;
+    border-radius: 1em;
+    background-color: #3a9691;
+    color: whitesmoke;
+    font-weight: bold;
+    margin: .5em;
+    cursor:pointer
+}
+
+.titleContainer h3{
+    font-family: 'Pacifico', cursive;
+    font-size: 7.5vmin;
+    color: #eb6d19;
+    text-shadow: 4px 4px 2px rgba(0,0,0,0.1);
+    align-self: flex-start;
+    padding: 1rem;
+    text-align: center;
+}
+
+.titleContainer p{
+    font-family: 'Martel Sans', sans-serif;
+    color: #4a4a4a;
+    font-size: 2.5vmin;
+    font-weight: bold;
+    letter-spacing: .5vmin; 
+    text-align: center;
+}
+
+input::placeholder{
+    font-family: 'Martel Sans', sans-serif;
+    color: #5c5c5c;
+    font-size: 2vmin;
+    font-weight: bold;
+}
+
+.arrow{
+    padding-left: .3em;
+    margin-top: 2.5em;
+    text-align: start;
+    width: 50%;
+    background-color: #44b6b0;
+    clip-path: polygon(0% 0%, 75% 0%, 92% 51%, 75% 100%, 0% 100%);
+}
