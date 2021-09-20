@@ -1,0 +1,27 @@
+<%-include('partials/head.ejs')%>
+    <header>
+        <%-include('partials/navbar.ejs') %>
+    </header>
+    <main>
+        <main class="signIn">
+            <div class="titleContainer">
+                <h3>Happy Cooking!</h3>
+                <p>Let's get started!</p>
+            </div>
+            <form action="/signIn" method="POST">
+                <input type="email" placeholder="Email" name="email" required>
+                <input type="password" placeholder="Password" name="password" required>
+                <button>Sign In</button>
+                <p>Don't have an account? <a href="/signUp">Sign up here</a></p>
+            </form>
+            <div class="showError">
+                <%if(error){%>
+                    <small><%=error.includes('password') ? error : 'Oh No! Something went wrong! Try again later'%></small>
+               <% }%>
+            </div>
+            
+             
+        </main>
+    </main>
+</body>
+</html>

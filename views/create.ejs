@@ -1,0 +1,45 @@
+<%-include('partials/head.ejs')%>
+    <header>
+        <%-include('partials/navbar.ejs') %>
+    </header>
+    <main class="profile">
+        <div class="letsCreate">
+            <h2>Let's <span>Create</span> Together!</h2>
+        </div>
+        <form action="/myrecipes/<%=userId%>" method="POST">
+            <input type="text" placeholder="Title" name="title"  value="<%= editRecipe ? editRecipe.title : ''%>"  required>
+            <input type="text" placeholder="Description" name="description"  value="<%= editRecipe ? editRecipe.description : '' %>" required>
+            <div class="recipeNumbers">
+                <input type="number" placeholder="Time" name="time"  value="<%= editRecipe ? editRecipe.time : '' %>" required>
+                <input type="number" placeholder="Servings" name="servings"  value="<%= editRecipe ? editRecipe.servings : '' %>" required>
+            </div>
+                <p>Ingredients:</p>
+                <div class="ingredients">
+                    <% if(editRecipe){ %>
+                        <div id="ingredientsBox">
+                            <% editRecipe.ingredients.forEach(ingredient =>{ %>
+                                <input type="text" name="ingredients" value="<%=ingredient%>">
+                           <% })%>
+                        </div>
+                    <%}%>
+                    <div id="ingredientsBox"></div>
+                    <button class="moreInput" onclick="addInput()">More</button>
+                </div>
+            <input type="text" placeholder="Url Photo" name="photo"  value="<%= editRecipe ? editRecipe.photo : '' %>" required>
+            <input type="text" placeholder="Type" name="type"  value="<%= editRecipe ? editRecipe.type : '' %>" required>
+            <input type="hidden" name="_id" value="<%= editRecipe ? editRecipe._id : null %>">
+            <button>Post</button>
+        </form>
+
+    </main>
+    <%-include('partials/footer.ejs')%>
+    <script>
+        const addInput = () => {
+            let input = document.createElement('input')
+            input.name = "ingredients"
+            input.value = "<%=editRecipe ? editRecipe.ingredients : '' %>"
+            document.getElementById('ingredientsBox').appendChild(input)
+        }
+    </script>
+</body>
+</html>

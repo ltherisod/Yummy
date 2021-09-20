@@ -7,23 +7,28 @@ router.route('/')
 
 router.route('/signUp')
 .get(userControllers.signUp)
+.post(userControllers.createAccount)
 
 router.route('/signIn')
 .get(userControllers.signIn)
+.post(userControllers.logIn)
 
+router.route('/logOut')
+.get(userControllers.logOut)
 
+router.route('/create')
+.get(recipesControllers.createRecipe)
 
-// .router.route('/breakfast')
-// .get(recipesControllers.breakfast)
+router.route('/myrecipes/:_id')
+.get(recipesControllers.myRecipes)
+.post(recipesControllers.addRecipe)
 
-// .router.route('/meal')
-// .get(recipesControllers.meal)
+router.route('/deletedRecipe/:_id')
+.get(recipesControllers.deleteRecipe)
 
-// .router.route('/dessert')
-// .get(recepiesControllers.dessert)
+router.route('/editRecipe/:_id')
+.get(recipesControllers.editRecipe)
 
-// .router.route('drinks')
-// .get(recepiesControllers.drinks)
-
-
+router.route('/error')
+.get(userControllers.errorPage)
 module.exports = router

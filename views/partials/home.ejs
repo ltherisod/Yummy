@@ -1,0 +1,57 @@
+<main>
+    <% if(!loggedIn){ %>
+            <div class="homeNoAccount">
+                <div class="titleBanner">
+                    <h3>Be Creative</h3>
+                    <h3>Cooking </h3>
+                    <h3>Your <span>Food</span></h3>
+                    <a href="/signUp"><button>Get Started!</button></a>
+                </div>
+                <div class="noAccountBanner"></div>
+            </div>
+        <%}else{%>
+            <div class="home">
+                <div class="checkOut">
+                  <h3>Check</h3>
+                  <h3>Out <span>Your</span></h3>
+                  <h3>Recipies!</h3>
+                </div>
+                <div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active d-flex justify-content-center align-items-center flex-column">
+                            <p>Breakfast</p>
+                          <div class="breakfast">
+                            <span class="arrow"><a href="/myrecipes/<%=userId%>" class="title">Breakfast</a></span>
+                          </div>
+                      </div>
+                      <div class="carousel-item d-flex justify-content-center align-items-center flex-column">
+                          <p>Meals</p>
+                        <div class="meals">
+                          <span class="arrow"><a href="/myrecipes/<%=userId%>" class="title">Meals</a></span>
+                        </div>
+                      </div>
+                      <div class="carousel-item d-flex justify-content-center align-items-center flex-column">
+                          <p>Desserts</p>
+                        <div class="desserts">
+                          <span class="arrow"><a href="/myrecipes/<%=userId%>" class="title">Desserts</a></span>
+                        </div>
+                      </div>
+                      <div class="carousel-item d-flex justify-content-center align-items-center flex-column">
+                          <p>Drinks</p>
+                        <div class="drinks">
+                          <span class="arrow"><a href="/myrecipes/<%=userId%>" class="title">Drinks</a></span>
+                        </div>
+                    </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                </div>
+        <%}%>
+</main>

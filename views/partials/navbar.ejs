@@ -1,0 +1,11 @@
+<nav>
+    <a class="<%= title.includes('Home') ? 'active' : null  %>" href="/">Home</a>
+    <% if (!loggedIn) { %>
+    <a class="<%= title.includes('Sign In') ? 'active' : null  %>" href="/signIn">Sign In</a>
+    <a class="<%= title.includes('Sign Up') ? 'active' : null  %>" href="/signUp">Sign up</a>
+    <%}else{%>
+        <a class="<%= title.includes('Create') ? 'active' : null  %>" href="/create">Create</a>
+        <a href="/logOut"> Log Out</a>
+   <%}%>
+    
+</nav>

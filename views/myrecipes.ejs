@@ -1,0 +1,68 @@
+<%-include('partials/head.ejs')%>
+<header>
+    <%-include('partials/navbar.ejs') %>
+</header>
+<main class="myrecipes">
+    
+    <% if(!recipes.length){ %>
+        <div class="norecipes">
+            <div class="noRecipesTitles">
+                <h3>There Are No</h3>
+                <h3>Recipes</h3>
+                <h3>Posted <span>Yet!</span></h3>
+                <a href="/create"><button>Let's Create!</button></a>
+            </div>
+                <div class="noRecipesPhoto"></div>
+        </div>
+    <% }else{ %>
+        <h2> <span>My</span> Recipes</h2>
+        <% recipes.forEach(recipe => { %>
+            <div class="recipe">
+                <div class="recipePhoto"style="background-image:url(<%=recipe.photo%>)"></div>
+                <div>
+                    <div class="editRecipe">
+                        <p class="recType"><%=recipe.type%></p>
+                        <div>
+                            <a class="icon" href="/deletedRecipe/<%=recipe._id%>" ><i class="far fa-trash-alt"></i></a>
+                            <a class="icon" href="/editRecipe/<%=recipe._id%>" ><i class="fas fa-pencil-alt"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="recTitle"><%=recipe.title%> <i class="fas fa-check-circle"></i></h3>
+                   
+                </div>
+                <div>
+                    <div class="recInfo">
+                        <div class="recTime">
+                            <i class="far fa-clock"></i>
+                            <p><%=recipe.time%> hours</p>
+           
+                        </div>
+                        <div class="recServings">
+                            <i class="fas fa-utensils"></i>
+                            <p><%=recipe.servings%> serving</p>
+                        </div>
+                        <div class="emoji">
+                            <i class="far fa-smile-wink"></i>
+                            <p>delicious</p>
+                        </div>
+                    </div>
+                    <div class="recDescrip">
+                        <p><%=recipe.description%></p>
+                    </div>
+                    <div class="recIngredients">
+                        <p class="ingredientsTitle">Ingredients</p>
+                        <ul>
+                            <%recipe.ingredients.forEach(ingredient => { %>
+                                <li><%=ingredient%></li>
+                            <%})%>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+       <% }) %> 
+   <% } %>
+</main>
+<%-include('partials/footer.ejs')%>
+<script src="https://kit.fontawesome.com/f119dc4da4.js" crossorigin="anonymous"></script>   
+</body>
+</html>
