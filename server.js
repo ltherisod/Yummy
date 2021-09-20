@@ -26,4 +26,4 @@ app.use('/', urlControllers.checkURL, router)
 
 
 
-app.listen(4000, ()=> console.log("Server running"))
+app.listen(process.env.PORT, process.env.HOST || '0.0.0.0', () => console.log("Server running"))
