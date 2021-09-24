@@ -15,19 +15,16 @@
             </div>
                 <p>Ingredients:</p>
                 <div class="ingredients">
-                    <% if(editRecipe){ %>
                         <div id="ingredientsBox">
-                            <% editRecipe.ingredients.forEach(ingredient =>{ %>
-                                <input type="text" name="ingredients" value="<%=ingredient%>">
-                           <% })%>
+                                <input type="text" name="ingredients" value="<%=editRecipe ? editRecipe.ingredients : ''%>">
                         </div>
-                    <%}%>
+                   
                     <div id="ingredientsBox"></div>
                     <button class="moreInput" onclick="addInput()">More</button>
                 </div>
             <input type="text" placeholder="Url Photo" name="photo"  value="<%= editRecipe ? editRecipe.photo : '' %>" required>
             <input type="text" placeholder="Type" name="type"  value="<%= editRecipe ? editRecipe.type : '' %>" required>
-            <input type="hidden" name="_id" value="<%= editRecipe ? editRecipe._id : null %>">
+            <input type="hidden" name="id" value="<%= editRecipe ? editRecipe.id : null %>">
             <button>Post</button>
         </form>
 

@@ -1,29 +1,48 @@
 const express= require('express')
+const database = require('./config/database')
 const router = require('./routes/index')
-const session = require('express-session')
-const mongo = require('connect-mongodb-session')(session)
-const app =express()
+const Sequelize = require('sequelize')
+ const session = require('express-session')
+const User = require('./models/User')
+const Recipe = require('./models/Recipe')
+const SequelizeStore = require('connect-session-sequelize')(session.Store)
 require('dotenv').config()
-const myStore = new mongo({
-    uri: process.env.MONGODATABASE,
-    collection: 'sessions'
-})
+
+const app =express()
 require('./config/database')
 
 
 app.use(express.static('public'))
 app.set('view engine', 'ejs') //busca las vistas en views directamente y archivos ejs
 app.use(express.urlencoded({extended:true})) //middleware
-app.use(session({
-    secret:process.env.PHRASE,
-    resave:false,
-    saveUninitialized:false,
-    store: myStore
-}))
 
+Recipe.belongsTo(User)
+User.hasMany(Recipe)
+
+const myStore = new SequelizeStore({
+    db: database,
+  })
+
+  app.use(
+    session({
+      secret: process.env.PHRASE,
+      store: myStore,
+      resave: false,
+      saveUninitialized:false,
+      proxy:true,
+    })
+  )
+  
+  myStore.sync()
+  
 const urlControllers = require('./controllers/urlControllers')
-app.use('/', urlControllers.checkURL, router)
 
 
 
-app.listen(process.env.PORT, process.env.HOST || '0.0.0.0', () => console.log("Server running"))
+
+
+database.sync()
+.then(()=>{
+    app.use('/', urlControllers.checkURL, router)
+    app.listen(4000)
+})

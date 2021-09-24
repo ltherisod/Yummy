@@ -19,14 +19,14 @@ router.route('/logOut')
 router.route('/create')
 .get(recipesControllers.createRecipe)
 
-router.route('/myrecipes/:_id')
+router.route('/myrecipes/:id')
 .get(recipesControllers.myRecipes)
 .post(recipesControllers.addRecipe)
 
-router.route('/deletedRecipe/:_id')
+router.route('/deletedRecipe/:id')
 .get(recipesControllers.deleteRecipe)
 
-router.route('/editRecipe/:_id')
+router.route('/editRecipe/:id')
 .get(recipesControllers.editRecipe)
 
 router.route('/error')

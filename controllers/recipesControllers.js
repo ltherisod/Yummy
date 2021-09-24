@@ -3,15 +3,16 @@ const Recipe = require('../models/Recipe')
 
 const recipesControllers ={
     home: (req, res) => {
+        console.log(req.session)
         res.render('index',{
             title:'Home',
              userId : req.session.userId,
-            loggedIn: req.session.loggedIn
+             loggedIn: req.session.loggedIn
         })
     },
     myRecipes : async (req, res) => {
-        const recipes = await Recipe.find({userId:req.session.userId})
-        
+        console.log(req.par)
+        const recipes = await Recipe.findAll({where:{userId:req.params.id}})
         res.render('myrecipes', {
             title:'My Recipes',
             recipes,
@@ -30,12 +31,12 @@ const recipesControllers ={
      },
     addRecipe: async (req, res) => {
         console.log(req.body)
-        const {title, description, time, servings, ingredients, photo, type, _id} = req.body
+        const {title, description, time, servings, ingredients, photo, type, id} = req.body
         let newRecipe;
-        if(!_id){
-            newRecipe= new Recipe({title, description, time, servings, ingredients, photo, type, userId:req.params._id})
+        if(!id){
+            newRecipe= new Recipe({title, description, time, servings, ingredients, photo, type, userId:req.params.id})
         }else{
-            newRecipe = await Recipe.findOne({_id})
+            newRecipe = await Recipe.findOne({where:{id}})
             newRecipe.title = title
             newRecipe.description = description
             newRecipe.time = time
@@ -43,7 +44,7 @@ const recipesControllers ={
             newRecipe.ingredients = ingredients
             newRecipe.photo = photo
             newRecipe.type = type
-            newRecipe.userId = req.params._id
+            newRecipe.userId = req.params.id
         } 
         console.log(newRecipe)
         try {
@@ -54,11 +55,12 @@ const recipesControllers ={
         }
     },
     deleteRecipe : async (req, res) => {
-        await Recipe.findOneAndDelete({_id:req.params._id})
+        let recipeDeleted = await Recipe.findByPk(req.params.id)
+        await recipeDeleted.destroy()
         res.redirect(`/myrecipes/${req.session.userId}`)
     },
     editRecipe : async (req, res) => {
-        let recipeEdited = await Recipe.findOne({_id:req.params._id}) 
+        let recipeEdited = await Recipe.findByPk(req.params.id) 
         console.log(recipeEdited)
         res.render('create', {
             title : 'Edit recipe',

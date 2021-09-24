@@ -30,14 +30,14 @@ const userControllers = {
     createAccount: async(req, res) =>{
         const {firstname, lastname, email, password} = req.body
         let cryptPass = bcryptjs.hashSync(password)
-        let newUser = new User ({firstname, lastname, email, password:cryptPass })
+        let newUser = await new User ({firstname, lastname, email, password:cryptPass })
         try{
-            let existingUser = await User.findOne({email:email})
+            let existingUser = await User.findOne({where:{email}})
             if(existingUser) throw new Error(' This mail is already in use ⛔')
             await newUser.save()
             req.session.loggedIn = true
             req.session.name = newUser.firstname
-            req.session.userId = newUser._id
+            req.session.userId = newUser.id
             res.redirect('/')
         }catch(error){
             res.render('signUp', {
@@ -50,13 +50,13 @@ const userControllers = {
     logIn: async(req, res) =>{
         const{email, password} = req.body
         try{
-            let user = await User.findOne({email:email})
+            let user = await User.findOne({where:{email}})
             if(!user) throw new Error(' Wrong password or email ⛔')
             let correctPass = bcryptjs.compareSync(password, user.password)
             if(!correctPass) throw new Error(' Wrong password or email ⛔')
             req.session.loggedIn = true
             req.session.name = user.firstname
-            req.session.userId = user._id
+            req.session.userId = user.id
             res.redirect('/')
         }catch(error){
             res.render('signIn',{
