@@ -18,10 +18,6 @@
                         <div id="ingredientsBox">
                                 <input type="text" name="ingredients" value="<%=editRecipe ? editRecipe.ingredients : ''%>">
                         </div>
-                   
-                    <div id="ingredientsBox"></div>
-                    <button class="moreInput" onclick="addInput()">More</button>
-                </div>
             <input type="text" placeholder="Url Photo" name="photo"  value="<%= editRecipe ? editRecipe.photo : '' %>" required>
             <input type="text" placeholder="Type" name="type"  value="<%= editRecipe ? editRecipe.type : '' %>" required>
             <input type="hidden" name="id" value="<%= editRecipe ? editRecipe.id : null %>">
@@ -30,13 +26,6 @@
 
     </main>
     <%-include('partials/footer.ejs')%>
-    <script>
-        const addInput = () => {
-            let input = document.createElement('input')
-            input.name = "ingredients"
-            input.value = "<%=editRecipe ? editRecipe.ingredients : '' %>"
-            document.getElementById('ingredientsBox').appendChild(input)
-        }
-    </script>
+   
 </body>
 </html>
