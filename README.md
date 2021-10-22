@@ -1,4 +1,4 @@
-# Yummy Web
+# Yummy Web 🍳
 
 Yummy! es un proyecto realizado en una semana en el transcurso del Bootcamp en MindHub. Es un recetario virtual, en donde los usuarios pueden crearse una cuenta y subir sus recetas en su perfil. Cada usuario es capaz de editar y borrar dicho posteo. En este proyecto, se realizó otra rama llamada sequelize en la cual se reemplaza la base de datos utilizada por MySQL y se adecúa el código a la misma.
 
@@ -7,7 +7,7 @@ Yummy! es un proyecto realizado en una semana en el transcurso del Bootcamp en M
 
 ## Empezamos! 🚀
 
-### Demo
+### Demo 💻
 
 Se puede ver el demo de la web en el siguiente link: [Yummy!](https://yummyarg.herokuapp.com/)
 
